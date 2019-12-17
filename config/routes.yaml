@@ -1,0 +1,15 @@
+prostage_accueil:
+  path: /
+  controller: App\Controller\ProStageController::index
+
+prostage_ressource:
+  path: /ressource/{idStage}
+  controller: App\Controller\ProStageController::afficherStage
+ 
+prostage_liste_entreprises:
+  path: /entreprises/
+  controller: App\Controller\ProStageController::afficherEntreprises
+  
+prostage_formations:
+  path: /formations/
+  controller: App\Controller\ProStageController::afficherFormations

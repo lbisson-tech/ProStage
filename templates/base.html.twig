@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}prostage!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+		<h1> ----------------HEADER------------------ </h1>
+        {% block header %}{% endblock %}
+		<h1> ----------------CONTENU------------------ </h1>
+		{% block contenu %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
