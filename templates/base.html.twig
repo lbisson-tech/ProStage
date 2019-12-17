@@ -20,11 +20,10 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    {% block titreContenu %}
+                    {% block contenu %}
                     <h3>
-                        CECI EST UN TITRE
-                    </h3>
-                    {% endblock %}
+                       {% block titreContenu %}{% endblock %}
+                    </h3>                    
 
                     <table class="table">
                         <thead>
@@ -39,11 +38,14 @@
                                 <th>
                                     Formations concernées
                                 </th>
+                                <th>
+                                    Détails
+                                </th>
                                 {% endblock %}
                             </tr>
                         </thead>
                         <tbody>
-                            {% block contenuTableau %}
+                            {% block contenuTableau %}                           
                             <tr>
                                 <td>
                                     1
@@ -54,31 +56,38 @@
                                 <td>
                                     DUT Info, LP Prog
                                 </td>
+                                <td>
+                                    <a href="{{path('prostage_ressource', {idStage:1})}}">Voir plus</a>
+                                </td>
                             </tr>
                             {% endblock %}
                         </tbody>
                     </table>
+                    {% endblock %}
                 </div>
             </div>
 
             <!-- FOOTER DE TOUTES LES PAGES -->
-            <div class="row">
-                <div class="col-md-4 align-self-center">
-                    <p>
-                        Crée par Lucas Bisson
-                    </p>
-                </div>
+            <footer class="page-footer fixed-bottom bg-dark">
+                <div class="row">
+                    <div class="col-md-4 text-center" style="color: gray;">
+                        <p>
+                            Crée par Lucas Bisson
+                        </p>
+                        </div>
 
-                <div class="col-md-4 align-self-center">
-                    <p>
-                        Projet ProStage dans le cadre du S3
-                    </p>
+                        <div class="col-md-4 text-center" style="color: gray;">
+                            <p>
+                                Projet ProStage dans le cadre du S3
+                            </p>
+                        </div>
+                        
+                        <div class="col-md-4" style="text-align: right; padding-right: 55px">
+                            <img alt="Bootstrap Image Preview" src="https://www.iutbayonne.univ-pau.fr/sites/default/files/logos/logo%20iut%202018%20h.jpg" width=175 height=75 />
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="col-md-4 align-self-center">
-                    <img alt="Bootstrap Image Preview" src="https://www.iutbayonne.univ-pau.fr/sites/default/files/logos/logo%20iut%202018%20h.jpg" width=175 height=75 />
-                </div>
-            </div>
+            </footer>
         </div>
 
         <!-- BLOC JAVASCRIPT UTILISE PAR BOOTSTRAP -->

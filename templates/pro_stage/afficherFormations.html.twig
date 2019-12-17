@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+
 {% block header %}
 <li class="nav-item">
     <a class="nav-link" href="{{path('prostage_accueil')}}">Accueil<span class="sr-only">(current)</span></a>
@@ -12,6 +13,7 @@
     <a class="nav-link" href="{{path('prostage_formations')}}">Formations</a>
 </li>
 {% endblock %}
-{% block contenu %}
-<p>Cette page affichera bientot la liste des formations</p>
+
+{% block titreContenu %}
+Liste des formations
 {% endblock %}
