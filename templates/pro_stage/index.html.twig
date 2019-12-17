@@ -1,5 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
 <h1>Bienvenue sur ProStage<h1>
-<p>Vous trouverez ci-dessous les dernieres ressources</p>
+<p>Vous trouverez ci-dessous les derniers stages</p>
+{% endblock %}
+{% block contenu %}
 <ul>
     <li>
         <a href="{{path('prostage_ressource',{idStage:5})}}">Exo 1 - TP3 - M1102</a>
@@ -11,3 +16,4 @@
         <a href="{{path('prostage_liste_entreprises')}}">Entreprises</a>
     </li>
 </ul>
+{% endblock %}
