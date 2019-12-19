@@ -36,6 +36,7 @@ class ProStageController extends AbstractController
 
     public function afficherStagesFormation($idFormation)
     {
+        $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         $touslesstages = $repositoryStage->findAll();
@@ -44,13 +45,10 @@ class ProStageController extends AbstractController
 
         foreach($touslesstages as $stage)
         {
-            foreach($stage.liste_formations as $formation)
-            {
-                if ($formation = $idFormation)
-                {
-                   $stages[] = $stage; 
-                }
-            }
+            if($stage->getListeFormations()->contains($idFormation))
+            { 
+                $stages[] = $stage;
+            }    
         }
 
         //Envoyer les données à la vue
