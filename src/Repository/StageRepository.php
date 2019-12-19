@@ -19,6 +19,20 @@ class StageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stage::class);
     }
 
+    //Tentative de fonction pour régler un problème de sélection
+    /*public function recupStage($idFormation): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $requete = $entityManager->createQuery(
+            'SELECT S
+            FROM App\Entity\Stage S
+            WHERE S.liste_formations  :idFormation'
+        )->setParameter('idFormation', $idFormation);
+
+        // returns an array of Product objects
+        return $requete->getResult();
+    }*/
     // /**
     //  * @return Stage[] Returns an array of Stage objects
     //  */

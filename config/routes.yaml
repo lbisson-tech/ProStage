@@ -6,6 +6,10 @@ prostage_stages_entreprise:
   path: /entreprise/{idEntreprise}
   controller: App\Controller\ProStageController::afficherStagesEntreprise
 
+prostage_stages_formation:
+  path: /formation/{idFormation}
+  controller: App\Controller\ProStageController::afficherStagesFormation
+
 prostage_ressource:
   path: /stage/{idStage}
   controller: App\Controller\ProStageController::afficherStage

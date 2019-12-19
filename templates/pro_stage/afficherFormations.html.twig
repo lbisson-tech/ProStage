@@ -17,3 +17,31 @@
 {% block titreContenu %}
 Liste des formations
 {% endblock %}
+
+{% block titresTableau %}
+    <th>
+        Nom
+    </th>
+    <th>
+        Nom complet
+    </th>
+    <th>
+        Stages
+    </th>
+{% endblock %}
+
+{% block contenuTableau %}
+{% for formation in formations %}
+<tr>
+    <td>
+        {{formation.nomF}}
+    </td>
+    <td>
+        {{formation.nomComplet}}
+    </td>
+    <td>
+        <a href="{{path('prostage_stages_formation', {idFormation:formation.id})}}">Voir stages</a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

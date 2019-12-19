@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
-use App\ntity\Formation;
+use App\Entity\Formation;
 
 class ProStageController extends AbstractController
 {
@@ -34,6 +34,29 @@ class ProStageController extends AbstractController
         return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
     }
 
+    public function afficherStagesFormation($idFormation)
+    {
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        $touslesstages = $repositoryStage->findAll();
+
+        $stages = array();
+
+        foreach($touslesstages as $stage)
+        {
+            foreach($stage.liste_formations as $formation)
+            {
+                if ($formation = $idFormation)
+                {
+                   $stages[] = $stage; 
+                }
+            }
+        }
+
+        //Envoyer les données à la vue
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
+    }
+
     public function afficherStage($idStage)
     {
         //Récupérer le repository
@@ -49,10 +72,10 @@ class ProStageController extends AbstractController
 	public function afficherEntreprises()
 	{
         //Récupérer le repository
-        $repositoryStage = $this->getDoctrine()->getRepository(Entreprise::class);
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 
         //Récupérer les ressources en BD
-        $entreprises = $repositoryStage->findAll();
+        $entreprises = $repositoryEntreprise->findAll();
 
         //Envoyer les données à la vue
 		return $this->render('pro_stage/afficherEntreprises.html.twig',['entreprises'=>$entreprises]);
@@ -60,6 +83,13 @@ class ProStageController extends AbstractController
     
 	public function afficherFormations()
 	{
-		return $this->render('pro_stage/afficherFormations.html.twig');
+        //Récupérer le repository
+        $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+
+        //Récupérer les ressources en BD
+        $formations = $repositoryFormation->findAll();
+
+        //Envoyer les données à la vue
+		return $this->render('pro_stage/afficherFormations.html.twig',['formations'=>$formations]);
 	}
 }
