@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\entity\Stage;
-use App\entity\Entreprise;
-use App\entity\Formation;
+use App\Entity\Stage;
+use App\Entity\Entreprise;
+use App\ntity\Formation;
 
 class ProStageController extends AbstractController
 {
@@ -19,16 +19,45 @@ class ProStageController extends AbstractController
         $stages = $repositoryStage->findAll();
 
         //Envoyer les données à la vue
-        return $this->render('pro_stage/index.html.twig',['stages'=>$stages]);
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
     }
+
+    public function afficherStagesEntreprise($idEntreprise)
+    {
+        //Récupérer le repository
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Récupérer les ressources en BD
+        $stages = $repositoryStage->findBy(['id_entreprise'=>$idEntreprise]);
+
+        //Envoyer les données à la vue
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
+    }
+
     public function afficherStage($idStage)
     {
-        return $this->render('pro_stage/afficherStage.html.twig',['idStage'=>$idStage]);
+        //Récupérer le repository
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Récupérer la ressource en BD
+        $stage = $repositoryStage->findOneById($idStage);
+
+        //Envoyer les données à la vue
+        return $this->render('pro_stage/afficherStage.html.twig',['stage'=>$stage]);
     }
+
 	public function afficherEntreprises()
 	{
-		return $this->render('pro_stage/afficherEntreprises.html.twig');
-	}
+        //Récupérer le repository
+        $repositoryStage = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        //Récupérer les ressources en BD
+        $entreprises = $repositoryStage->findAll();
+
+        //Envoyer les données à la vue
+		return $this->render('pro_stage/afficherEntreprises.html.twig',['entreprises'=>$entreprises]);
+    }
+    
 	public function afficherFormations()
 	{
 		return $this->render('pro_stage/afficherFormations.html.twig');

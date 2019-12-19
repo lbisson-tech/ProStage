@@ -15,7 +15,18 @@
 {% endblock %}
 
 {% block contenu %}
-<h1>Stage {{idStage}}</h1>
-<p>Cette page affichera bientot le stage {{idStage}}</p>
+<h1>{{stage.titre}}</h1>
+<h2>Employeur : {{stage.getIdEntreprise().nomE}}</h2>
+<h2>
+    Formation(s) concernée(s) :
+    {% for formation in stage.getListeFormations() %}
+    {{ formation.nomF }}
+    {% if formation != stage.getListeFormations()|last %}
+     ,
+    {% endif %}
+    {% endfor %}
+</h2>
+<p>{{stage.description}}</p>
+<p>{{stage.email}}</p>
 {% endblock %}
 

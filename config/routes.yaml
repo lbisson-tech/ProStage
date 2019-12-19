@@ -2,8 +2,12 @@ prostage_accueil:
   path: /
   controller: App\Controller\ProStageController::index
 
+prostage_stages_entreprise:
+  path: /entreprise/{idEntreprise}
+  controller: App\Controller\ProStageController::afficherStagesEntreprise
+
 prostage_ressource:
-  path: /ressource/{idStage}
+  path: /stage/{idStage}
   controller: App\Controller\ProStageController::afficherStage
  
 prostage_liste_entreprises:

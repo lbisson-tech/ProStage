@@ -17,3 +17,26 @@
 {% block titreContenu %}
 Liste des stages
 {% endblock %}
+
+{% block contenuTableau %}
+{% for stage in listeStages %}
+<tr>
+    <td>
+        {{stage.titre}}
+    </td>
+    <td>
+        {{stage.getIdEntreprise().nomE}}
+    </td>
+    <td>
+        {% for formation in stage.getListeFormations() %}
+
+            {{formation.nomF}}<br>
+
+        {% endfor %}
+    </td>
+    <td>
+        <a href="{{path('prostage_ressource', {idStage:stage.id})}}">Voir plus</a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

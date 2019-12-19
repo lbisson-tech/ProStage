@@ -30,9 +30,6 @@
                             <tr>
                                 {% block titresTableau %}
                                 <th>
-                                    Numero du stage
-                                </th>
-                                <th>
                                     Titre du stage
                                 </th>
                                 <th>
@@ -49,23 +46,6 @@
                         </thead>
                         <tbody>
                             {% block contenuTableau %}                           
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    Analyste Dassault
-                                </td>
-                                <td>
-                                    Dassault
-                                </td>
-                                <td>
-                                    DUT Info, LP Prog
-                                </td>
-                                <td>
-                                    <a href="{{path('prostage_ressource', {idStage:1})}}">Voir plus</a>
-                                </td>
-                            </tr>
                             {% endblock %}
                         </tbody>
                     </table>
@@ -74,7 +54,7 @@
             </div>
 
             <!-- FOOTER DE TOUTES LES PAGES -->
-            <footer class="page-footer fixed-bottom bg-dark">
+            <footer class="page-footer fixed-bottom bg-dark" style="margin-top:-30px;">
                 <div class="row">
                     <div class="col-md-4 text-center" style="color: gray;">
                         <p>

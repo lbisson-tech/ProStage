@@ -17,3 +17,43 @@
 {% block titreContenu %}
 Liste des entreprises
 {% endblock %}
+
+{% block titresTableau %}
+    <th>
+        Nom
+    </th>
+    <th>
+        Activité
+    </th>
+    <th>
+        Adresse
+    </th>
+    <th>
+        Site
+    </th>
+    <th>
+        Stages
+    </th>
+{% endblock %}
+
+{% block contenuTableau %}
+{% for entreprise in entreprises %}
+<tr>
+    <td>
+        {{entreprise.nomE}}
+    </td>
+    <td>
+        {{entreprise.activite}}
+    </td>
+    <td>
+        {{entreprise.adresse}}
+    </td>
+    <td>
+        {{entreprise.site}}
+    </td>
+    <td>
+        <a href="{{path('prostage_stages_entreprise', {idEntreprise:entreprise.id})}}">Voir stages</a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}
