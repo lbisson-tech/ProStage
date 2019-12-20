@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-<li class="nav-item active">
+<li class="nav-item {% if affichage == 0 %} active {% endif %}">
     <a class="nav-link" href="{{path('prostage_accueil')}}">Accueil<span class="sr-only">(current)</span></a>
 </li>
 
@@ -15,7 +15,12 @@
 {% endblock %}
 
 {% block titreContenu %}
-Liste des stages
+Liste des stages 
+    {% if affichage == 1 %}
+        de l'entreprise {{ entreprise }}
+    {% elseif affichage == 2 %}
+        pour la formation {{ formation }}
+    {% endif %}
 {% endblock %}
 
 {% block contenuTableau %}

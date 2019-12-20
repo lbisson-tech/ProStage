@@ -19,7 +19,7 @@ class ProStageController extends AbstractController
         $stages = $repositoryStage->findAll();
 
         //Envoyer les données à la vue
-        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages,'affichage'=>0]);
     }
 
     public function afficherStagesEntreprise($idEntreprise)
@@ -27,11 +27,14 @@ class ProStageController extends AbstractController
         //Récupérer le repository
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
         //Récupérer les ressources en BD
         $stages = $repositoryStage->findBy(['id_entreprise'=>$idEntreprise]);
+        $entreprise = $repositoryEntreprise->findOneBy(['id'=>$idEntreprise])->getNomE();
 
         //Envoyer les données à la vue
-        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages,'affichage'=>1,'entreprise'=>$entreprise]);
     }
 
     public function afficherStagesFormation($idFormation)
@@ -39,9 +42,10 @@ class ProStageController extends AbstractController
         $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
 
         $stages = $repositoryFormation->findOneById($idFormation)->getListeStages();
+        $formation = $repositoryFormation->findOneBy(['id'=>$idFormation])->getNomF();
 
         //Envoyer les données à la vue
-        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
+        return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages,'affichage'=>2,'formation'=>$formation]);
     }
 
     public function afficherStage($idStage)
