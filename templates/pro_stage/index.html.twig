@@ -28,10 +28,8 @@ Liste des stages
         {{stage.getIdEntreprise().nomE}}
     </td>
     <td>
-        {% for formation in stage.getListeFormations() %}
-
+        {% for formation in stage.listeFormations %} 
             {{formation.nomF}}<br>
-
         {% endfor %}
     </td>
     <td>

@@ -40,7 +40,7 @@ class Stage
     private $id_entreprise;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Formation")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="liste_stages")
      */
     private $liste_formations;
 

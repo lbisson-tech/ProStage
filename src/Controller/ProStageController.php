@@ -37,19 +37,8 @@ class ProStageController extends AbstractController
     public function afficherStagesFormation($idFormation)
     {
         $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
-        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
-        $touslesstages = $repositoryStage->findAll();
-
-        $stages = array();
-
-        foreach($touslesstages as $stage)
-        {
-            if($stage->getListeFormations()->contains($idFormation))
-            { 
-                $stages[] = $stage;
-            }    
-        }
+        $stages = $repositoryFormation->findOneById($idFormation)->getListeStages();
 
         //Envoyer les données à la vue
         return $this->render('pro_stage/index.html.twig',['listeStages'=>$stages]);
